@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items:    center;
+  width:  100vw;
+  height: 100vh;
+  background: #000;
+}
+
+.button {
+  padding: 1rem 3rem;
+  border: 1px solid #fff;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  letter-spacing: .2em;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: transform .25s;
+
+  &:hover { transform: scale(1.05); }
+}
