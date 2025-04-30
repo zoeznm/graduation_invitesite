@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items:    center;
+  width:  100vw;
+  height: 100vh;
+  background: #ff8c00;          
+  color: #fff;
+}
+
+.headline {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+}
