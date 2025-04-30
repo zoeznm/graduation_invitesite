@@ -26,7 +26,7 @@ export default function Loader({ onFinish, duration = 3000 }: LoaderProps) {
       className={`${styles.container} ${isExit ? styles.fadeOut : ''}`}
       aria-label="로딩 화면"
     >
-      <h1 className={styles.title}>GRDUATION&nbsp;INVITE</h1>
+      <h1 className={styles.title}>GRADUATION&nbsp;INVITE</h1>
     </section>
   );
 }
