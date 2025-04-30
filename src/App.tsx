@@ -1,8 +1,8 @@
 // src/App.tsx
 import { useState } from 'react';
-import Loader from '@/components/Loader/Loader';
-import EnterGate from '@/components/EnterGate/EnterGate'; // 앞서 만든 컴포넌트
-import MainPage from '@/pages/Main/Main';                 // 앞서 만든 컴포넌트
+import Loader from './components/Loader/Loader';
+import EnterGate from './components/EnterGate/EnterGate'; 
+import MainPage from './pages/Main/Main';                 
 
 type Stage = 'loading' | 'enter' | 'main';
 
