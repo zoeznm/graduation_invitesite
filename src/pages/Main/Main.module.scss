@@ -1,14 +1,23 @@
 .wrapper {
   display: flex;
-  justify-content: center;
-  align-items:    center;
-  width:  100vw;
-  height: 100vh;
-  background: #ff8c00;          
+  flex-direction: column;   
+  background: #ff8c00;
   color: #fff;
+}
+
+/* 각 섹션 공통 스타일 */
+.section {
+  height: 100vh;  
+  width: 100vw;        
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
 .headline {
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 700;
+  text-align: center;
 }
