@@ -5,7 +5,7 @@ export default function MainPage() {
     <main className={styles.wrapper}>
       {/* 섹션 1 */}
       <section className={styles.section}>
-        <h2 className={styles.headline}>SECTION 01</h2>
+        <h2 className={styles.headline}>당신은 화가 나는 순간이 있는가?</h2>
       </section>
 
       {/* 섹션 2 */}
