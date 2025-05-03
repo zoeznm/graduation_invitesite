@@ -11,7 +11,7 @@ $nav-gap: 24rem;
 
   /* 기본 메뉴 텍스트 색상 및 전환 효과 */
   ul li {
-    color: #000;
+    color: #fff;
     transition: color 0.3s;
   }
 
@@ -40,7 +40,7 @@ $nav-gap: 24rem;
 /* 두 번째 섹션 진입 시(다크 모드) */
 .dark {
   ul li {
-    color: #fff;
+    color: #000;
   }
 }
 
