@@ -4,6 +4,7 @@ import styles from './Main.module.scss';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { translations } from '../../contexts/lang/translations';
 import ThreeDSection from '../../components/ThreeDSection/ThreeDSection';
+import FinalSection from '../../components/FinalSection/FinalSection';
 
 const Main: React.FC = () => {
   const { lang } = useContext(LanguageContext);
@@ -21,6 +22,7 @@ const Main: React.FC = () => {
       </section>
 
       <ThreeDSection />
+      <FinalSection />
     </>
   );
 };
