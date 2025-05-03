@@ -1,5 +1,3 @@
-/* src/components/Nav/Nav.module.scss */
-
 /* 간격 변수 선언 */
 $nav-gap: 24rem;
 
@@ -10,6 +8,12 @@ $nav-gap: 24rem;
   padding: 1rem 0.5rem;
   background: transparent;
   z-index: 1000;
+
+  /* 기본 메뉴 텍스트 색상 및 전환 효과 */
+  ul li {
+    color: #000;
+    transition: color 0.3s;
+  }
 
   ul {
     position: relative;
@@ -46,6 +50,13 @@ $nav-gap: 24rem;
   li:nth-child(4) {
     left: calc(50% + #{$nav-gap * 2});
     transform: translateX(-50%);
+  }
+}
+
+/* 어두운 섹션 진입 시 텍스트를 흰색으로 변경 */
+.dark {
+  ul li {
+    color: #fff;
   }
 }
 
