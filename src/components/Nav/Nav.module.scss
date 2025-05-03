@@ -1,0 +1,69 @@
+/* src/components/Nav/Nav.module.scss */
+
+/* 간격 변수 선언 */
+$nav-gap: 24rem;
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  padding: 1rem 0.5rem;
+  background: transparent;
+  z-index: 1000;
+
+  ul {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  /* 1. PÁKYEON (왼쪽 고정) */
+  li:nth-child(1) {
+    left: 2rem;
+    transform: none;
+  }
+  /* 2. GRADUATION (화면 중앙) */
+  li:nth-child(2) {
+    left: 49.5%;
+    transform: translateX(-50%);
+  }
+  /* 3. [ KOREAN ] (중앙에서 $nav-gap 만큼 우측) */
+  li:nth-child(3) {
+    left: calc(50% + #{$nav-gap});
+    transform: translateX(-50%);
+  }
+  /* 4. CONTACT (중앙에서 $nav-gap * 2 만큼 우측) */
+  li:nth-child(4) {
+    left: calc(50% + #{$nav-gap * 2});
+    transform: translateX(-50%);
+  }
+}
+
+/* 모바일 뷰 */
+@media (max-width: 768px) {
+  .nav ul {
+    position: static;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav li {
+    position: static;
+    transform: none;
+  }
+
+  .nav li:nth-child(2),
+  .nav li:nth-child(4) {
+    display: none;
+  }
+}

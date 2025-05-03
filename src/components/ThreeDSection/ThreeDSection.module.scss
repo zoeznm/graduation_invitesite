@@ -3,17 +3,18 @@
   height: 100vh;
   background-color: #000;
   color: #fff;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .content {
-  /* 필요하면 이 안에 레이아웃·애니메이션 추가 */
-  position: relative;
   width: 80%;
   height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .placeholder {
@@ -25,4 +26,13 @@
   justify-content: center;
   font-size: 1.2rem;
   opacity: 0.5;
+}
+
+.scrollMore {
+  position: absolute;
+  bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
 }
