@@ -1,87 +1,91 @@
 .wrapper {
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #000;
   color: #fff;
   position: relative;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  padding: 2rem 4rem;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
 }
 
-/* 상단 언어 토글 버튼 */
-.langToggle {
-  position: absolute;
-  top: 6rem;
-  left: 1rem;
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-}
 
-/* 가운데 3단 레이아웃 */
-.inner {
-  flex: 1;
+/* ▶ 히어로 : 이미지는 2번째 컬럼(가운데), 텍스트는 3번째 컬럼(오른쪽) */
+.hero {
+  position: relative;        /* 자식 절대위치 기준 */
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin: 3rem auto;         /* 상하 3rem, 좌우 자동(센터 정렬) */
+  width: 80%;                /* 필요에 따라 조절 */
+  max-width: 1200px;         /* 필요에 따라 조절 */
   gap: 2rem;
+  margin-top: 20%;
 }
 
-/* 왼쪽 텍스트 */
-.left {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
+/* 이미지(3D 오브젝트) 자리를 화면 가로 중앙에 절대 위치로 고정 */
+.heroImage {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: #ddd;
+}
+/* 텍스트 블록은 flex의 흐름 상에서 자동으로 오른쪽 끝으로 밀려납니다 */
+.heroText {
+  margin-left: auto;   /* 이미지 오른쪽에 붙이고, 남은 공간은 왼쪽에 */
+  max-width: 30%;      /* 필요에 따라 텍스트 폭 제한 */
 }
 
-/* 중앙 원(3D 모델 자리) */
-.center {
-  width: 400px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.circle {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #fff;
-  border-radius: 50%;
+.heroText p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 1rem;
 }
 
-/* 오른쪽 정보 */
-.right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
+.heroLink {
   font-size: 1rem;
-
-  h2 { font-size: 1.2rem; margin: 0; }
-  p  { margin: 0; }
+  font-weight: bold;
+  text-decoration: none;
 }
-.emailInput {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #fff;
+
+/* ▶ 푸터 : 대형 타이틀 위에 올라오도록 z-index 조정 */
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  font-size: 0.875rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;    /* bigTitle 아래가 아니라 위에 렌더링 됩니다 */
+  margin-top: 15%;
+}
+
+/* 푸터 내부 텍스트/링크 스타일 */
+.footerCol p,
+.footerCol a {
+  margin: 0.25rem 0;
   color: inherit;
-  padding: 0.5rem 0;
-  margin-top: 1rem;
-  width: 100%;
-  max-width: 200px;
+  text-decoration: none;
+  display: block;
+}
+.footerCol a:hover {
+  text-decoration: underline;
 }
 
-/* 하단 대형 타이틀 */
-.heading {
-  font-size: 4rem;
-  text-align: center;
-  margin: 2rem 0;
-  letter-spacing: 0.1em;
+/* ▶ 대형 바닥 타이틀은 그대로 */
+.bigTitle {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  white-space: nowrap;
+  color: #fff;
+  z-index: 0;   /* 푸터보다 뒤에 깔립니다 */
 }

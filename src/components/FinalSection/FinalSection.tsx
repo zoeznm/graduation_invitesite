@@ -1,52 +1,61 @@
-import React  from 'react';
-import styles from './FinalSection.module.scss';
-
+// src/components/FinalSection/FinalSection.tsx
+import React from "react";
+import styles from "./FinalSection.module.scss";
 
 const FinalSection: React.FC = () => {
-  // 1) 언어 토글
-
-
-  // 2) 페이지에 고정할 정보
-  const leftTitle = 'PÁKYEON';
-  const heading = 'GRADUATION INVITATION';
-  const city = 'DAEJEON';
-  const date = '06. 07. 2025';
-  const venue = 'Daejeon Artist House';
-  const address = 'Daejeon, Jung-gu, Jungang-ro, 32';
-  const copyright = '©2025 / ALL RIGHTS RESERVED';
-  const credit = 'made by matomabo';
-
   return (
     <section className={styles.wrapper}>
+      {/* 상단 헤더: 언어 토글 + CONTACT 버튼 */}
 
-      {/* 좌·중·우 3단 레이아웃 */}
-      <div className={styles.inner}>
-        {/* 왼쪽: 큰 텍스트 */}
-        <div className={styles.left}>{leftTitle}</div>
+      {/* 메인 히어로 영역: 이미지 왼쪽, 텍스트 오른쪽 */}
+      <div className={styles.hero}>
+        <div className={styles.placeholder}>3D Object Here</div>
+        {/* 이미지 또는 3D 랜더링 컴포넌트 삽입 가능 */}
 
-        {/* 중앙: 3D 오브젝트 로딩 자리 */}
-        <div className={styles.center}>
-          <div className={styles.circle} />
-        </div>
-
-        {/* 오른쪽: 정보 텍스트 */}
-        <div className={styles.right}>
-          <h2>{city}</h2>
-          <p>{date}</p>
-          <p>{venue}</p>
-          <p>{address}</p>
-          <p>{copyright}</p>
-          <p>{credit}</p>
-          <input
-            type="email"
-            placeholder="[ ENTER YOUR EMAIL ]"
-            className={styles.emailInput}
-          />
+        <div className={styles.heroText}>
+          <p>Daejeon Artist House</p>
+          <p>Daejeon, Jung-gu, Jungang-ro, 32</p>
+          <p>042-480-1081</p>
+          <a href="#contact" className={styles.heroLink}>
+            Address Information →
+          </a>
         </div>
       </div>
 
-      {/* 맨 아래 중앙 대형 타이틀 */}
-      <h1 className={styles.heading}>{heading}</h1>
+      {/* 푸터: 4열 구성 */}
+      <footer className={styles.footer} id="contact">
+        <div className={styles.footerCol}>
+          <p>
+            PÁKYEON
+            <br />
+            Basé à Toulouse
+            <br />
+            ©2025
+          </p>
+        </div>
+        <div className={styles.footerCol}>
+          <p>
+            oko0320@naver.com
+            <br />
+            06 50 83 05 15
+          </p>
+        </div>
+        <div className={styles.footerCol}>
+          <a href="#">Instagram →</a>
+          <a href="#">Email →</a>
+          <a href="#">Behance →</a>
+        </div>
+        <div className={styles.footerCol}>
+          <p>
+            Made By @matomabo
+            <br />
+            DA et site web par Okey Studio
+          </p>
+        </div>
+      </footer>
+
+      {/* 바닥 대형 타이틀 */}
+      <div className={styles.bigTitle}>what words in here Full word</div>
     </section>
   );
 };
