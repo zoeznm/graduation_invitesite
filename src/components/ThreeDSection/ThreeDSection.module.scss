@@ -27,12 +27,11 @@
   font-size: 1.2rem;
   opacity: 0.5;
 }
-
-.scrollMore {
+.scrollDown {
   position: absolute;
   bottom: 1.5rem;
-  width: 100%;
-  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.8rem;
   letter-spacing: 0.2em;
 }
