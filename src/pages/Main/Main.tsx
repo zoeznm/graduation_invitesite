@@ -3,12 +3,14 @@ import React, { useContext } from 'react';
 import styles from './Main.module.scss';
 import { LanguageContext } from '../../contexts/LanguageContext';
 import { translations } from '../../contexts/lang/translations';
+import ThreeDSection from '../../components/ThreeDSection/ThreeDSection';
 
 const Main: React.FC = () => {
   const { lang, toggleLang } = useContext(LanguageContext);
   const { nav, quote, scrollDown } = translations[lang];
 
   return (
+    <>
     <section className={styles.hero}>
       <nav className={styles.nav}>
         <ul>
@@ -27,6 +29,9 @@ const Main: React.FC = () => {
 
       <div className={styles.scrollDown}>{scrollDown}</div>
     </section>
+
+    <ThreeDSection />
+    </>
   );
 };
 
