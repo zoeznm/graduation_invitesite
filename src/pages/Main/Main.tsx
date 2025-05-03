@@ -1,27 +1,27 @@
+import React from 'react';
 import styles from './Main.module.scss';
 
-export default function MainPage() {
+const Main: React.FC = () => {
   return (
-    <main className={styles.wrapper}>
-      {/* 섹션 1 */}
-      <section className={styles.section}>
-        <h2 className={styles.headline}>당신은 화가 나는 순간이 있는가?</h2>
-      </section>
+    <section className={styles.hero}>
+      <nav className={styles.nav}>
+        <ul>
+          <li>PÁKYEON</li>
+          <li>GRADUATION</li>
+          <li>[ KOREAN ]</li>
+          <li>CONTACT</li>
+        </ul>
+      </nav>
 
-      {/* 섹션 2 */}
-      <section className={styles.section}>
-        <h2 className={styles.headline}>SECTION 02</h2>
-      </section>
+      <div className={styles.content}>
+        <p className={styles.quote}>
+          “Have you ever had a moment when you were truly angry?”
+        </p>
+      </div>
 
-      {/* 섹션 3 */}
-      <section className={styles.section}>
-        <h2 className={styles.headline}>SECTION 03</h2>
-      </section>
-
-      {/* 필요하면 더 추가 */}
-      <section className={styles.section}>
-        <h2 className={styles.headline}>SECTION 04</h2>
-      </section>
-    </main>
+      <div className={styles.scrollDown}>SCROLL FOR MORE</div>
+    </section>
   );
-}
+};
+
+export default Main;

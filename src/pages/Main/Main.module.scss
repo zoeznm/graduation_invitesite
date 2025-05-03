@@ -1,23 +1,104 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;   
-  background: #000;
+/* Main.module.scss */
+$nav-gap: 24rem;  // 중앙에서 떨어진 기본 간격 (원하는 값으로 조절)
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
   color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 각 섹션 공통 스타일 */
-.section {
-  height: 100vh;  
-  width: 100vw;        
+/* 네비게이션 */
+.nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 2rem 0;  // 위아래 여백
+  
+  ul {
+    position: relative;      // li 절대위치 기준
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul li {
+    position: absolute;
+    top: 2rem;               // nav 높이에 맞춰 조정
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  /* 1. PÁKYEON (왼쪽 고정) */
+  ul li:nth-child(1) {
+    left: 2rem;
+    transform: none;
+  }
+  /* 2. GRADUATION (화면 중앙) */
+  ul li:nth-child(2) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  /* 3. [ KOREAN ] (중앙에서 $nav-gap 만큼 우측) */
+  ul li:nth-child(3) {
+    left: calc(50% + #{$nav-gap});
+    transform: translateX(-50%);
+  }
+  /* 4. CONTACT (중앙에서 $nav-gap*2 만큼 우측) */
+  ul li:nth-child(4) {
+    left: calc(50% + #{$nav-gap * 2});
+    transform: translateX(-50%);
+  }
+}
+
+/* 이하 기존 스타일 유지 */
+.content {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  padding: 0 2rem;
 }
 
-.headline {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 700;
+.quote {
+  font-size: 1.8rem;
+  font-style: italic;
   text-align: center;
+  max-width: 800px;
+  line-height: 1.4;
+}
+
+.scrollDown {
+  position: absolute;
+  bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+/* mobile 스타일 */
+@media (max-width: 768px) {
+  .nav {
+    padding: 1rem;             // 모바일용 패딩
+  }
+  .nav ul {
+    display: flex;             // flex로 좌우 정렬
+    justify-content: space-between;
+    position: static;          // 절대위치 해제
+  }
+  .nav ul li {
+    position: static;          // 절대위치 해제
+    transform: none;
+    font-size: 1rem;           // 크기 조절 가능
+  }
+  /* 숨길 메뉴들 */
+  .nav ul li:nth-child(2),   /* GRADUATION */
+  .nav ul li:nth-child(4)    /* CONTACT */ {
+    display: none;
+  }
 }
