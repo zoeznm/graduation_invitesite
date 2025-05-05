@@ -6,28 +6,9 @@ $nav-gap: 24rem;  // 중앙에서 떨어진 기본 간격 (원하는 값으로 �
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  color: #fff;
+  color: #000;
   display: flex;
   flex-direction: column;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;                     /* top/right/bottom/left: 0 */
-    pointer-events: none;
-    
-    /* 1) 배경을 흰색으로 채워야 filter가 흰→검정 노이즈를 만듭니다 */
-    background-color: #fff;
-    
-    /* 2) SVG 필터 적용 */
-    filter: url('#noiseFilter');
-    
-    /* 3) 블렌드 모드로 자연스럽게 합성 */
-    mix-blend-mode: multiply;
-    
-    /* 4) 노이즈 강도: 0.05 → 0.1 정도로 올려보세요 */
-    opacity: 0.1;
-  }
 }
 
 

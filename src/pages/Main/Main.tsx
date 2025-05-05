@@ -5,6 +5,7 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 import { translations } from '../../contexts/lang/translations';
 import ThreeDSection from '../../components/ThreeDSection/ThreeDSection';
 import FinalSection from '../../components/FinalSection/FinalSection';
+import BusinessCard3D from '../../components/BusinessCard3D/BusinessCard3D';
 
 const Main: React.FC = () => {
   const { lang } = useContext(LanguageContext);
@@ -13,7 +14,7 @@ const Main: React.FC = () => {
   return (
     <>
       <Nav />
-
+      <BusinessCard3D />
       <section className={styles.hero}>
         <div className={styles.content}>
           <p className={styles.quote}>{quote}</p>
