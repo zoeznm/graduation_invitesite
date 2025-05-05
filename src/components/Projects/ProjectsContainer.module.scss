@@ -1,0 +1,120 @@
+/* src/components/Projects/ProjectsContainer.module.scss */
+
+/* Projects container wrapper */
+.projectsContainer {
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 20vh;
+}
+
+/* —— List View —— */
+.listView {
+  display: flex;
+  flex-direction: column;
+
+  .projectItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(248, 245, 242, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    /* hover animation overlay */
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: var(--warm-off-white);
+      z-index: 1;
+      pointer-events: none;
+      transition: height 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    }
+    &:hover::before {
+      height: 100%;
+    }
+    &:not(:hover)::before {
+      transition-duration: 0.8s;
+    }
+  }
+
+  .projectTitle,
+  .projectYear {
+    font-size: 1.8rem;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: exclusion;
+  }
+
+  /* hide images in list view */
+  .projectImageContainer {
+    display: none;
+    visibility: hidden;
+
+    &.transitioningToList {
+      display: block !important;
+      visibility: visible !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      .projectImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+/* —— Grid View —— */
+.gridView {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+
+  .projectItem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projectImageContainer {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1rem;
+    display: block;
+    overflow: hidden;
+  }
+
+  /* alternate image aspect ratios */
+  .projectItem:nth-child(odd) .projectImageContainer {
+    aspect-ratio: 1 / 1;
+  }
+  .projectItem:nth-child(even) .projectImageContainer {
+    aspect-ratio: 1 / 1.5;
+  }
+
+  .projectImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .projectTitle {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
+  }
+  .projectYear {
+    font-size: 1.4rem;
+    color: rgba(248, 245, 242, 0.7);
+  }
+}
