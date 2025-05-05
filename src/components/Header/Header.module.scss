@@ -1,0 +1,70 @@
+.siteHeader {
+  padding: 1.5rem 2rem;
+  background-color: var(--warm-off-black);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  padding: 0 2rem;
+}
+.logoContainer {
+  grid-column: 1 / 3;
+}
+.logoCircles {
+  display: flex;
+  gap: 1rem;
+}
+.circle {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background-color: var(--warm-off-white);
+  transition: transform 0.5s;
+}
+.circle1 {
+  transform: translateY(-50%);
+}
+.circle2 {
+  transform: translateY(-50%);
+  mix-blend-mode: exclusion;
+}
+.logoContainer:hover .circle1 {
+  transform: translate(-0.5rem, -50%);
+}
+.logoContainer:hover .circle2 {
+  transform: translate(0.5rem, -50%);
+}
+.mainNav {
+  grid-column: 4 / 6;
+}
+.mainNav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.mainNav a {
+  color: var(--warm-off-white);
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: opacity 0.3s;
+}
+.mainNav a:not(.active) {
+  opacity: 0.5;
+}
+.mainNav a.active {
+  font-weight: bold;
+}
+.contactLink {
+  grid-column: 9 / 13;
+  text-align: right;
+}
+.contactLink a {
+  color: var(--warm-off-white);
+  text-decoration: none;
+  font-size: 1.4rem;
+}
