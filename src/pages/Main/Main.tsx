@@ -1,19 +1,27 @@
-import React, { useContext } from 'react';
-import Nav from '../../components/Nav/Nav';
-import styles from './Main.module.scss';
-import { LanguageContext } from '../../contexts/LanguageContext';
-import { translations } from '../../contexts/lang/translations';
-import ThreeDSection from '../../components/ThreeDSection/ThreeDSection';
-import FinalSection from '../../components/FinalSection/FinalSection';
-import BusinessCard3D from '../../components/BusinessCard3D/BusinessCard3D';
+import React from 'react';
+// import Nav from '../../components/Nav/Nav';
+// import styles from './Main.module.scss';
+// import { LanguageContext } from '../../contexts/LanguageContext';
+// import { translations } from '../../contexts/lang/translations';
+// import ThreeDSection from '../../components/ThreeDSection/ThreeDSection';
+// import FinalSection from '../../components/FinalSection/FinalSection';
+// import BusinessCard3D from '../../components/BusinessCard3D/BusinessCard3D';
+import Header from '../../components/Header/Header';
+import ProjectsContainer from '../../components/Projects/ProjectsContainer';
+import Footer from '../../components/Footer/Footer';
 
 const Main: React.FC = () => {
-  const { lang } = useContext(LanguageContext);
-  const { quote, scrollDown } = translations[lang];
+  // const { lang } = useContext(LanguageContext);
+  // const { quote, scrollDown } = translations[lang];
 
   return (
     <>
-      <Nav />
+    <Header />
+    <main>
+      <ProjectsContainer />
+    </main>
+    <Footer />
+      {/* <Nav />
       <BusinessCard3D />
       <section className={styles.hero}>
         <div className={styles.content}>
@@ -23,7 +31,7 @@ const Main: React.FC = () => {
       </section>
 
       <ThreeDSection />
-      <FinalSection />
+      <FinalSection /> */}
     </>
   );
 };

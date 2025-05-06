@@ -21,6 +21,9 @@ const Header: React.FC = () => (
         <a href="mailto:hi@filip.fyi">+GET IN TOUCH</a>
       </div>
     </div>
+    <div className={styles.headerLogoText}>
+      PÁKYEON
+    </div>
   </header>
 );
 

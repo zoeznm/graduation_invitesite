@@ -4,7 +4,7 @@
   background-color: var(--warm-off-white);
   color: var(--warm-off-black);
   padding: 8rem 2rem;
-  min-height: 75vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -79,13 +79,22 @@
   }
 }
 
-.footerLogo {
-  width: 100%;
-  margin-top: 4rem;
-  opacity: 1;
-
-  svg {
-    width: 100%;
-    height: auto;
-  }
+.footerLogoText {
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 30rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--warm-off-black);
+  text-align: center;
+  margin-top: 1rem;
 }
+// :global(.logo-path) {
+//   clip-path: inset(100% 0 0 0);
+//   opacity: 1;
+// }
+// .logoPath {
+//     clip-path: inset(100% 0 0 0);
+//     opacity: 1;
+//     transition: clip-path 1.2s ease-out;
+//   }
