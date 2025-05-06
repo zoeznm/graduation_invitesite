@@ -5,7 +5,7 @@
 }
 
 .horizontalContainer {
-  width: 100%; height: 100%;
+  width: 100vw; height: 100%;
   overflow: hidden; position: relative;
 }
 
@@ -19,6 +19,7 @@
 }
 
 .panel {
+  flex: 0 0 100vw;
   width: 100vw; 
   height: 100vh;
   position: relative; overflow: hidden;
@@ -53,8 +54,16 @@
 .firstPanel {
   width: 150vw;   /* 원하는 만큼 키우세요 */
 }
+.panelCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
 .imagePlaceholder {
-  width: 80%;
+  width: 100%;
   height: 300px;
   background-color: #444;
   color: #ddd;

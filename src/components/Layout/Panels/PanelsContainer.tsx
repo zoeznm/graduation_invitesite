@@ -31,23 +31,16 @@ const PanelsContainer: React.FC = () => {
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
 
-    // window 크기 바뀔 때마다 패널 너비 재설정
     const onResize = () => {
       const w = window.innerWidth;
       widthRef.current = w;
-
       panelsRef.current
         ?.querySelectorAll(`.${styles.panel}`)
-        .forEach(el => {
-          // 첫 번째 패널(.firstPanel)은 건너뜀
-          if ((el as HTMLElement).classList.contains(styles.firstPanel)) return;
-          (el as HTMLElement).style.width = `${w}px`;
-        });
+        .forEach(el => (el as HTMLElement).style.width = `${w}px`);
     };
     window.addEventListener('resize', onResize);
     onResize();
 
-    // 휠 스크롤 → translateX
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
       targetXRef.current = clamp(
@@ -57,18 +50,16 @@ const PanelsContainer: React.FC = () => {
       );
       startAnimate();
     };
-    const hc = horizontalRef.current;
-    hc?.addEventListener('wheel', onWheel, { passive: false });
+    horizontalRef.current?.addEventListener('wheel', onWheel, { passive: false });
 
     return () => {
       window.removeEventListener('resize', onResize);
-      hc?.removeEventListener('wheel', onWheel);
+      horizontalRef.current?.removeEventListener('wheel', onWheel);
       lenis.destroy();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 애니메이션 루프
   const animate = useCallback(() => {
     currentXRef.current +=
       (targetXRef.current - currentXRef.current) * SMOOTH;
@@ -83,7 +74,6 @@ const PanelsContainer: React.FC = () => {
     }
   }, []);
 
-  // 애니메이션 시작
   const startAnimate = () => {
     if (!animatingRef.current) {
       animatingRef.current = true;
@@ -96,18 +86,14 @@ const PanelsContainer: React.FC = () => {
       <div className={styles.horizontalContainer} ref={horizontalRef}>
         <div className={styles.panelsContainer} ref={panelsRef}>
 
-          {/* ── 1번 패널 : split + firstPanel */}
+          {/* 1. 좌:텍스트 • 우:이미지 */}
           <section
-            className={`
-              ${styles.panel}
-              ${styles.panelSplit}
-              ${styles.firstPanel}
-            `}
+            className={`${styles.panel} ${styles.panelSplit}`}
             data-index={0}
           >
             <div className={styles.panelLeft}>
-              <h2>여기는 첫 번째 패널의 제목입니다</h2>
-              <p>이곳에 설명 텍스트나 본문을 자유롭게 입력하세요.</p>
+              <h2>첫 번째 패널 제목</h2>
+              <p>첫 번째 패널 설명 텍스트를 여기에 적습니다.</p>
             </div>
             <div className={styles.panelRight}>
               <div className={styles.imagePlaceholder}>
@@ -116,14 +102,77 @@ const PanelsContainer: React.FC = () => {
             </div>
           </section>
 
-          {/* ── 2~9번 패널 (더미) */}
-          {Array.from({ length: PANEL_COUNT - 1 }).map((_, idx) => (
-            <section
-              key={idx + 1}
-              className={styles.panel}
-              data-index={idx + 1}
-            />
-          ))}
+          {/* 2. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={1}
+          >
+            <h2>두 번째 패널 중앙 텍스트</h2>
+          </section>
+
+          {/* 3. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={2}
+          >
+            <h2>세 번째 패널 중앙 텍스트</h2>
+          </section>
+
+          {/* 4. 좌:이미지 • 우:텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelSplit}`}
+            data-index={3}
+          >
+            <div className={styles.panelLeft}>
+              <div className={styles.imagePlaceholder}>
+                이미지 영역
+              </div>
+            </div>
+            <div className={styles.panelRight}>
+              <h2>네 번째 패널 텍스트</h2>
+              <p>네 번째 패널 설명을 여기에 작성합니다.</p>
+            </div>
+          </section>
+
+          {/* 5. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={4}
+          >
+            <h2>다섯 번째 패널 중앙 텍스트</h2>
+          </section>
+
+          {/* 6. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={5}
+          >
+            <h2>여섯 번째 패널 중앙 텍스트</h2>
+          </section>
+
+          {/* 7. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={6}
+          >
+            <h2>일곱 번째 패널 중앙 텍스트</h2>
+          </section>
+
+          {/* 8. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={7}
+          >
+            <h2>여덟 번째 패널 중앙 텍스트</h2>
+          </section>
+
+          {/* 9. 가운데 텍스트 */}
+          <section
+            className={`${styles.panel} ${styles.panelCenter}`}
+            data-index={8}
+          >
+            <h2>아홉 번째 패널 중앙 텍스트</h2>
+          </section>
 
         </div>
       </div>
