@@ -1,14 +1,10 @@
 // src/main.tsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import './styles/globals.scss';          // 전역 CSS 변수, 리셋 등
+// import './index.css';                 // 필요 없으면 주석
 
-// 전역 스타일 (리셋, 변수 등)
-import './styles/globals.scss';
-
-// (필요하다면) Vite가 기본으로 생성한 index.css
-// import './index.css';
-
-import App from './App';              
+import App from './App';
 
 
 const container = document.getElementById('root');

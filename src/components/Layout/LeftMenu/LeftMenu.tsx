@@ -1,86 +1,53 @@
-import React, { useState, useEffect, useRef } from 'react';
+// src/components/Layout/LeftMenu/LeftMenu.tsx
+import React, { useContext, useState } from 'react';
 import styles from './LeftMenu.module.scss';
+import { ScrollContext } from '../../../contexts/ScrollContext';
 
-const sections = [
-  'Introduction',
-  'Matthew',
-  'Beyond',
-  'Rick',
-  'Cosmos',
-  'Dialogue',
-  'Infinite',
-  'Vision',
-  'Contact',
+// 메뉴 레이블 (원하시는 대로 수정)
+const MENU_ITEMS = [
+  '01 Introduction',
+  '02 Matthew',
+  '03 Beyond',
+  '04 Rick',
+  '05 Cosmos',
+  '06 Dialogue',
+  '07 Infinite',
+  '08 Vision',
+  '09 Contact',
 ];
 
 const LeftMenu: React.FC = () => {
-  const [expanded, setExpanded] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  // body 클래스 토글
-  useEffect(() => {
-    document.body.classList.toggle('menu-expanded', expanded);
-  }, [expanded]);
-
-  // 메뉴 아이템 등장 애니메이션
-  const animateMenuItems = (show: boolean) => {
-    const items = menuRef.current?.querySelectorAll<HTMLAnchorElement>(
-      `.${styles.sectionNavItem}`
-    );
-    items?.forEach((item, i) => {
-      if (show) {
-        setTimeout(() => item.classList.add(styles.animateIn), 50 + i * 30);
-      } else {
-        item.classList.remove(styles.animateIn);
-      }
-    });
-  };
-
-  const toggleMenu = () => {
-    setExpanded((v) => !v);
-    if (!expanded) {
-      setTimeout(() => animateMenuItems(true), 150);
-    } else {
-      animateMenuItems(false);
-    }
-  };
+  const { scrollToPanel } = useContext(ScrollContext);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div
-      ref={menuRef}
-      className={`${styles.leftMenu} ${expanded ? styles.expanded : ''}`}
-    >
-      <div className={styles.leftMenuTop}>
-        <button
-          className={styles.menuBtn}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </div>
+    <div className={`${styles.leftMenu} ${open ? styles.expanded : ''}`}>
+      <button
+        className={styles.menuBtn}
+        aria-label="Toggle menu"
+        onClick={() => setOpen((o) => !o)}
+      >
+        <span/><span/><span/>
+      </button>
 
       <div className={styles.leftMenuMiddle}>
-        <div className={styles.logo}>(PAF)</div>
+        <div className={styles.logo}>SPACE</div>
       </div>
 
       <nav className={styles.sectionNav}>
-        {sections.map((label, idx) => (
-          <a
+        {MENU_ITEMS.map((label, idx) => (
+          <button
             key={idx}
             className={styles.sectionNavItem}
-            data-index={idx}
             onClick={() => {
-              /* 추후 PanelsContainer로 패널 이동 로직 연결 */
+              scrollToPanel(idx);
             }}
           >
             <span className={styles.sectionNavItemNumber}>
-              {String(idx + 1).padStart(2, '0')}
+              {label.slice(0, 2)}
             </span>
-            <span>{label}</span>
-          </a>
+            <span>{label.slice(3)}</span>
+          </button>
         ))}
       </nav>
     </div>
