@@ -50,6 +50,11 @@
   // mix-blend-mode: difference;
   z-index: 100;
 }
+.navLabel {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
 
 .navText {
   font-size: var(--text-xs);
