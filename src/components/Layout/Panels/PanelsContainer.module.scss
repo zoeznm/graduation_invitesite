@@ -1,0 +1,203 @@
+.pageContainer {
+  position: fixed; top: 0; left: var(--menu-collapsed-width);
+  right: 0; bottom: 0;
+  transition: left var(--transition-slow);
+}
+
+.horizontalContainer {
+  width: 100%; height: 100%;
+  overflow: hidden; position: relative;
+}
+
+.panelsContainer {
+  display: flex; height: 100vh;
+  will-change: transform;
+}
+
+.transitioning {
+  transition: transform var(--transition-slow);
+}
+
+.panel {
+  width: 100vw; 
+  height: 100vh;
+  position: relative; overflow: hidden;
+}
+
+/* 분할 패널 */
+.panelSplit {
+  display: flex;
+}
+
+.panelLeft,
+.panelRight {
+  width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: var(--panel-padding);
+}
+.panelLeft { background: #121212; color: var(--color-text); }
+.panelRight { background: var(--color-secondary); color: var(--color-text); }
+.panelLeft {
+  flex: 1;
+  padding: 2rem;
+  color: #fff;
+}
+.panelRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.firstPanel {
+  width: 150vw;   /* 원하는 만큼 키우세요 */
+}
+.imagePlaceholder {
+  width: 80%;
+  height: 300px;
+  background-color: #444;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: 2px dashed #666;
+}
+/* 전체 배경 패널 */
+.panelFull {
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+}
+.imageWrapper {
+  position: absolute; inset: 0; overflow: hidden; z-index: 1;
+}
+.fullBg {
+  width: 110%; height: 110%; object-fit: cover;
+  filter: brightness(0.7); will-change: transform;
+}
+.fullOverlay {
+  position: absolute; inset: 0;
+  background: var(--color-overlay); z-index: 2;
+}
+.fullContent {
+  position: relative; z-index: 3;
+  width: 80%; max-width: 800px;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-out-expo),
+              transform 0.6s var(--ease-out-expo);
+}
+
+/* 고정 패널 */
+.panelFixed {
+  position: relative; height: 100vh; overflow: hidden;
+}
+.fixedImage {
+  width: 110%; height: 110%; object-fit: cover;
+  filter: brightness(0.7); will-change: transform;
+}
+.fixedContent {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.5); color: #fff;
+  z-index: 2; padding: 0;
+}
+
+/* 비디오 패널 */
+.panelVideo {
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.videoBackground {
+  position: absolute; top:50%; left:50%;
+  min-width:100%; min-height:100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover; z-index:1;
+}
+.videoOverlay {
+  position: absolute; inset:0;
+  background: rgba(0,0,0,0.6); z-index:2;
+}
+.videoContent {
+  position: relative; z-index:3;
+  width:80%; max-width:800px; text-align:center;
+  opacity:0; transform:translateY(30px);
+  transition: opacity 0.6s var(--ease-out-expo),
+              transform 0.6s var(--ease-out-expo);
+}
+
+/* 연락처 패널 */
+.panelContact {
+  position: relative; background: var(--color-primary);
+  display:flex; align-items:center; justify-content:center;
+}
+.contactContainer {
+  width:80%; max-width:800px; text-align:center;
+}
+.contactContent {
+  position: relative; opacity:0; transform:translateY(30px);
+  transition: opacity 0.6s var(--ease-out-expo),
+              transform 0.6s var(--ease-out-expo);
+}
+.contactName {
+  font-size: clamp(6rem,15vw,10rem);
+  margin-bottom: var(--space-12);
+  line-height:1; font-weight:900;
+  text-transform:uppercase; letter-spacing:-0.03em;
+  color: var(--color-text) !important;
+}
+.emailWrapper {
+  position: relative; display:inline-flex; align-items:center;
+  gap: var(--space-3);
+  background: rgba(255,255,255,0.05);
+  padding: var(--space-4) var(--space-6);
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform var(--transition-medium),
+              background var(--transition-medium);
+}
+.emailWrapper:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-2px);
+}
+.email {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.email:hover { color: var(--color-accent); }
+.copyEmail {
+  background: none; border: none; cursor: pointer;
+  color: var(--color-text); opacity:0.7;
+  padding: var(--space-2);
+  display:flex; align-items:center; justify-content:center;
+  border-radius:50%;
+  transition: opacity var(--transition-fast),
+              background var(--transition-fast),
+              transform var(--transition-fast);
+}
+.copyEmail:hover {
+  opacity:1;
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.1);
+}
+.copyTooltip {
+  position: absolute; bottom:-30px; left:50%;
+  transform: translateX(-50%);
+  background: var(--color-accent); color:#fff;
+  padding: var(--space-1) var(--space-3);
+  border-radius:4px;
+  font-size: var(--text-xs);
+  opacity:0; visibility:hidden;
+  transition: opacity var(--transition-medium),
+              visibility var(--transition-medium);
+}
+.copyTooltip.active {
+  opacity:1; visibility:visible;
+}
+
+/* 공통 텍스트 스타일 등… (chapter, title, split-text → .word 애니메이션 포함) */
+/* 반응형은 위 CSS 그대로 사용 */

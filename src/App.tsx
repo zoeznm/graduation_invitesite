@@ -1,19 +1,14 @@
-// src/App.tsx
-import { useState } from "react";
-import Loader from "./components/Loader/Loader";
-import EnterGate from "./components/EnterGate/EnterGate";
-import MainPage from "./pages/Main/Main";
+import React from 'react';
+import LeftMenu from './components/Layout/LeftMenu/LeftMenu';
+import PanelsContainer from './components/Layout/Panels/PanelsContainer';
+import BottomNav from './components/Layout/BottomNav/BottomNav';
 
-type Stage = "loading" | "enter" | "main";
+const App: React.FC = () => (
+  <>
+    <LeftMenu />
+    <PanelsContainer />
+    <BottomNav />
+  </>
+);
 
-export default function App() {
-  const [stage, setStage] = useState<Stage>("loading");
-
-  return (
-    <>
-      {stage === "loading" && <Loader onFinish={() => setStage("enter")} />}
-      {stage === "enter" && <EnterGate onEnter={() => setStage("main")} />}
-      {stage === "main" && <MainPage />}
-    </>
-  );
-}
+export default App;

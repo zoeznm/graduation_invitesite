@@ -1,18 +1,21 @@
 // src/main.tsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
+
+// 전역 스타일 (리셋, 변수 등)
 import './styles/globals.scss';
-import App from './App';                            // .tsx 확장자는 빼고
-import { LanguageProvider } from './contexts/LanguageProvider';
+
+// (필요하다면) Vite가 기본으로 생성한 index.css
+// import './index.css';
+
+import App from './App';              
+
 
 const container = document.getElementById('root');
 if (!container) throw new Error('root 엘리먼트를 찾을 수 없습니다.');
 
 createRoot(container).render(
   <React.StrictMode>
-    <LanguageProvider>                            {/* 여기에 감싸기 */}
       <App />
-    </LanguageProvider>
   </React.StrictMode>
 );

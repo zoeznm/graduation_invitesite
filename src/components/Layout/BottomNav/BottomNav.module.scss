@@ -1,0 +1,20 @@
+.navigation {
+  position: fixed; bottom: var(--space-6);
+  left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center;
+  gap: var(--space-6);
+  color: #fff; mix-blend-mode: difference;
+  z-index: 100;
+}
+.navText { font-size: var(--text-xs); text-transform: uppercase; }
+.navProgress {
+  width: 150px; height: 2px;
+  background: rgba(255,255,255,0.3);
+  position: relative; overflow: hidden; border-radius:2px;
+}
+.navProgressFill {
+  position:absolute; top:0; left:0;
+  height:100%; background:#fff;
+  transform-origin:left; transform:scaleX(0);
+  will-change:transform;
+}
