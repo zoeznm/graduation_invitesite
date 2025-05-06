@@ -1,9 +1,8 @@
-// src/contexts/ScrollContext.tsx
 import { createContext } from 'react';
 
 export interface ScrollContextType {
-  /** LeftMenu 에서 호출할, 패널 인덱스 이동 함수 */
-  scrollToPanel: (index: number) => void;
+  /** 좌측 메뉴 클릭 → PanelsContainer 호출 */
+  scrollToPanel: (idx: number) => void;
 }
 
 export const ScrollContext = createContext<ScrollContextType>({

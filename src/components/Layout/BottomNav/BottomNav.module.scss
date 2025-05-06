@@ -1,20 +1,77 @@
+/* src/components/Layout/BottomNav/BottomNav.module.scss */
+
+/* 기존 스타일 */
+.nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.text {
+  font-size: 0.9rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.progress {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progressFill {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* 추가하신 스타일 */
 .navigation {
-  position: fixed; bottom: var(--space-6);
-  left: 50%; transform: translateX(-50%);
-  display: flex; align-items: center;
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
   gap: var(--space-6);
-  color: #fff; mix-blend-mode: difference;
+  color: #fff;
+  mix-blend-mode: difference;
   z-index: 100;
 }
-.navText { font-size: var(--text-xs); text-transform: uppercase; }
-.navProgress {
-  width: 150px; height: 2px;
-  background: rgba(255,255,255,0.3);
-  position: relative; overflow: hidden; border-radius:2px;
+
+.navText {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
 }
+
+.navProgress {
+  width: 150px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
 .navProgressFill {
-  position:absolute; top:0; left:0;
-  height:100%; background:#fff;
-  transform-origin:left; transform:scaleX(0);
-  will-change:transform;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+  will-change: transform;
 }

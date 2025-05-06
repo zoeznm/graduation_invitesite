@@ -1,20 +1,20 @@
-// src/App.tsx
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import LeftMenu from './components/Layout/LeftMenu/LeftMenu';
 import PanelsContainer from './components/Layout/Panels/PanelsContainer';
 import BottomNav from './components/Layout/BottomNav/BottomNav';
 import { ScrollContext } from './contexts/ScrollContext';
 
 const App: React.FC = () => {
-  // PanelsContainer 가 등록(register)해 주는 스크롤 함수 보관용 ref
+  // 1) PanelsContainer로 “스크롤 실행” 함수를 등록받을 ref
   const scrollFnRef = useRef<(idx: number) => void>(() => {});
 
-  // Context 에 제공할 scrollToPanel 함수
+  // 2) 현재 활성 패널(0~8)을 state로 관리
+  const [currentPanel, setCurrentPanel] = useState(0);
+
+  // Context에 넘길 scrollToPanel
   const contextValue = useMemo(
     () => ({
-      scrollToPanel: (idx: number) => {
-        scrollFnRef.current(idx);
-      },
+      scrollToPanel: (idx: number) => scrollFnRef.current(idx),
     }),
     []
   );
@@ -23,14 +23,21 @@ const App: React.FC = () => {
     <ScrollContext.Provider value={contextValue}>
       <LeftMenu />
 
-      {/* registerScroll prop 으로 스크롤 함수 등록 받음 */}
+      {/* 
+        • 메뉴 → PanelsContainer 스크롤 함수 등록(registerScroll)  
+        • PanelsContainer → App 에 패널 변경(onPanelChange) 알림 
+      */}
       <PanelsContainer
         registerScroll={(fn) => {
           scrollFnRef.current = fn;
         }}
+        onPanelChange={(idx) => {
+          setCurrentPanel(idx);
+        }}
       />
 
-      <BottomNav />
+      {/* 현재 활성 패널 인덱스를 보여주는 BottomNav */}
+      <BottomNav currentPanel={currentPanel} />
     </ScrollContext.Provider>
   );
 };

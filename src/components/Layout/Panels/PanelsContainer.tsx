@@ -1,8 +1,8 @@
-// src/components/Layout/Panels/PanelsContainer.tsx
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useContext } from 'react';
 import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollContext } from '../../../contexts/ScrollContext';
 import styles from './PanelsContainer.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,24 +15,28 @@ function clamp(val: number, min: number, max: number) {
   return Math.min(Math.max(val, min), max);
 }
 
-interface PanelsContainerProps {
-  /** App.tsx에서 전달해 주는, 메뉴 클릭 시 실행할 scroll 함수 등록기 */
+interface Props {
+  /** App.tsx → 여기로 “스크롤 실행” 함수를 등록 */
   registerScroll: (fn: (index: number) => void) => void;
+  /** 패널이 바뀔 때마다 App.tsx에 알려줄 콜백 */
+  onPanelChange: (index: number) => void;
 }
 
-const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => {
+const PanelsContainer: React.FC<Props> = ({ registerScroll, onPanelChange }) => {
+  useContext(ScrollContext);
+
+  // refs for animation state
   const horizontalRef = useRef<HTMLDivElement>(null);
   const panelsRef    = useRef<HTMLDivElement>(null);
-
-  // 애니메이션 상태는 ref로 관리
   const widthRef     = useRef(window.innerWidth);
   const targetXRef   = useRef(0);
   const currentXRef  = useRef(0);
   const animatingRef = useRef(false);
+  const lastPanelRef = useRef(-1);
 
   const getMaxX = () => (PANEL_COUNT - 1) * widthRef.current;
 
-  // 1) Lenis/GSAP 초기화 + resize, wheel 이벤트 등록
+  // 1) Lenis/GSAP + resize, wheel 이벤트
   useEffect(() => {
     const lenis = new Lenis();
     lenis.on('scroll', ScrollTrigger.update);
@@ -59,12 +63,12 @@ const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => 
       );
       startAnimate();
     };
-    const el = horizontalRef.current;
-    el?.addEventListener('wheel', onWheel, { passive: false });
+    horizontalRef.current?.addEventListener('wheel', onWheel, { passive: false });
 
     return () => {
       window.removeEventListener('resize', onResize);
-      el?.removeEventListener('wheel', onWheel);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      horizontalRef.current?.removeEventListener('wheel', onWheel);
       lenis.destroy();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,18 +78,27 @@ const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => 
   const animate = useCallback(() => {
     currentXRef.current +=
       (targetXRef.current - currentXRef.current) * SMOOTH;
+
     if (panelsRef.current) {
       panelsRef.current.style.transform =
         `translateX(-${currentXRef.current}px)`;
     }
+
+    // “활성 패널” 인덱스 계산 → 변경되면 onPanelChange 호출
+    const newPanel = Math.round(currentXRef.current / widthRef.current);
+    if (newPanel !== lastPanelRef.current) {
+      lastPanelRef.current = newPanel;
+      onPanelChange(newPanel);
+    }
+
     if (Math.abs(targetXRef.current - currentXRef.current) > 0.5) {
       requestAnimationFrame(animate);
     } else {
       animatingRef.current = false;
     }
-  }, []);
+  }, [onPanelChange]);
 
-  // 3) 애니메이션 시작 함수
+  // 3) 애니메이션 시작
   const startAnimate = useCallback(() => {
     if (!animatingRef.current) {
       animatingRef.current = true;
@@ -93,7 +106,7 @@ const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => 
     }
   }, [animate]);
 
-  // 4) LeftMenu에서 클릭된 인덱스에 따른 스크롤 함수 등록
+  // 4) LeftMenu에서 등록해준 scroll 함수를 받아둠
   useEffect(() => {
     registerScroll((panelIndex: number) => {
       targetXRef.current = panelIndex * widthRef.current;
@@ -106,7 +119,7 @@ const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => 
       <div className={styles.horizontalContainer} ref={horizontalRef}>
         <div className={styles.panelsContainer} ref={panelsRef}>
 
-          {/* 1번: 좌측 텍스트 • 우측 이미지 */}
+          {/* 1: 좌측 텍스트 · 우측 이미지 */}
           <section className={`${styles.panel} ${styles.panelSplit}`} data-index={0}>
             <div className={styles.panelLeft}>
               <h2>첫 번째 패널 제목</h2>
@@ -117,17 +130,13 @@ const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => 
             </div>
           </section>
 
-          {/* 2번: 가운데 텍스트 */}
+          {/* 2~9: 가운데 텍스트 혹은 Split 레이아웃 */}
           <section className={`${styles.panel} ${styles.panelCenter}`} data-index={1}>
             <h2>두 번째 패널 중앙 텍스트</h2>
           </section>
-
-          {/* 3번: 가운데 텍스트 */}
           <section className={`${styles.panel} ${styles.panelCenter}`} data-index={2}>
             <h2>세 번째 패널 중앙 텍스트</h2>
           </section>
-
-          {/* 4번: 좌측 이미지 • 우측 텍스트 */}
           <section className={`${styles.panel} ${styles.panelSplit}`} data-index={3}>
             <div className={styles.panelLeft}>
               <div className={styles.imagePlaceholder}>이미지 영역</div>
@@ -137,15 +146,13 @@ const PanelsContainer: React.FC<PanelsContainerProps> = ({ registerScroll }) => 
               <p>네 번째 패널 설명을 여기에 작성합니다.</p>
             </div>
           </section>
-
-          {/* 5~9번: 가운데 텍스트 */}
           {[4,5,6,7,8].map((idx) => (
             <section
               key={idx}
               className={`${styles.panel} ${styles.panelCenter}`}
               data-index={idx}
             >
-              <h2>{`${idx + 1}번째 패널 중앙 텍스트`}</h2>
+              <h2>{`${idx+1}번째 패널 중앙 텍스트`}</h2>
             </section>
           ))}
 
