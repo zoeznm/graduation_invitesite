@@ -155,7 +155,7 @@ const PanelsContainer: React.FC<Props> = ({
             data-index={1}
           >
             <div className={styles.boostioTopText}>
-            HNU 34th Graduation Collection Fashion Show
+              HNU 34th Graduation Collection Fashion Show
             </div>
 
             <h2 className={styles.boostioMainTitle}>개화(開火)</h2>
@@ -165,9 +165,7 @@ const PanelsContainer: React.FC<Props> = ({
               <div className={styles.boostioBottomRight}>SATURDAY</div>
             </div>
 
-            <div className={styles.boostioFooterText}>
-            Daejeon Artist House
-            </div>
+            <div className={styles.boostioFooterText}>Daejeon Artist House</div>
           </section>
           <section
             className={`${styles.panel} ${styles.panelCenter}`}
@@ -190,62 +188,28 @@ const PanelsContainer: React.FC<Props> = ({
 
           {/* 4번: 좌측 이미지 · 우측 텍스트 */}
           <section
-            className={`${styles.panel} ${styles.editorialSplit}`}
-            data-index={3}
+            className={`${styles.panel} ${styles.panelSplit}`}
+            data-index={0}
           >
             <div className={styles.panelLeft}>
-              <div className={styles.panelContent}>
-                <div className={styles.directionLabel}>Matthew</div>
-                <div className={styles.quoteContainer}>
-                  <div className={styles.quote}>
-                    "I've always approached the cosmos with a sense of wonder.
-                    It's like looking at your reflection in a mirror that
-                    stretches into infinity. You see yourself, but you also see
-                    beyond yourself."
-                  </div>
-                  <div className={styles.author}>INTERSTELLAR, 2014</div>
-                </div>
-                <div className={styles.imageContainer}>
-                  <div className={styles.imageWrapper}>
-                    <img
-                      src="https://cdn.cosmos.so/f22462ad-b33d-448d-aa08-cfbbbe79ef42.jpeg"
-                      alt="Space journey"
-                      className={styles.parallax}
-                      data-speed="0.15"
-                    />
-                  </div>
-                </div>
-                <div className={styles.conclusionText}>
-                  <p className={styles.splitText}>
-                    Looking out there is really looking in here. The questions
-                    we ask about the stars are really questions about ourselves.
-                  </p>
-                </div>
-              </div>
+              <div className={styles.chapter}>Introduction</div>
+              <h2 className={styles.title}>
+                {/* “Have you ever had a moment when you were truly angry?” */}
+                Have you ever been so angry that, for a moment, nothing mattered
+                but the fire inside you?
+              </h2>
+              {/* <p>“정말 화가 치밀어 올랐던 순간이 있었나요?”</p> */}
+              {/* <p>순간이라도 오직 가슴속 불길만 중요하게 느껴질 만큼 화가 난 적이 있나요?</p> */}
+              <p>
+                The vast emptiness of space offers us perspective. It reminds us
+                how small we are in the grand scheme of things. Yet somehow,
+                that doesn't diminish us – it elevates our existence into
+                something miraculous.
+              </p>
             </div>
             <div className={styles.panelRight}>
-              <div className={styles.panelContent}>
-                <div className={styles.directionLabel}>Rick</div>
-                <div className={styles.quoteContainer}>
-                  <div className={styles.quote}>
-                    "Great art creates space. Great space creates perspective.
-                    When we stand at the edge of the known, that's where true
-                    creativity begins."
-                  </div>
-                  <div className={styles.author}>CREATIVE PROCESS, 2022</div>
-                </div>
-                <div className={styles.fullQuote}>
-                  "The universe doesn't rush, yet everything gets done. That's
-                  the paradox we're trying to understand – infinite patience
-                  paired with constant evolution."
-                </div>
-                <div className={styles.text}>
-                  <p className={styles.splitText}>
-                    What we discover out there transforms everything down here.
-                    Each revelation about a distant galaxy reshapes how we see
-                    ourselves on this pale blue dot.
-                  </p>
-                </div>
+              <div className={styles.imagePlaceholder}>
+                <img src={FirstImage} alt="패널 이미지 설명" />
               </div>
             </div>
           </section>
