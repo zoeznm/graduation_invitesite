@@ -213,5 +213,23 @@
   opacity:1; visibility:visible;
 }
 
+@media (max-width: 768px) {
+  .panelsContainer {
+    /* .panelSplit 패널 전체를 수직 정렬(column)로 변경 */
+    .panelSplit {
+      display: flex;
+      flex-direction: column;
+    }
+    /* 좌/우 50% 너비였던 것을 100%로 */
+    .panelSplit .panelLeft,
+    .panelSplit .panelRight {
+      width: 100%;
+    }
+    /* 텍스트와 이미지 사이에 간격 추가 */
+    .panelSplit .panelLeft {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
 /* 공통 텍스트 스타일 등… (chapter, title, split-text → .word 애니메이션 포함) */
 /* 반응형은 위 CSS 그대로 사용 */
