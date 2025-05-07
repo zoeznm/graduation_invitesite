@@ -4,6 +4,7 @@ import Lenis from '@studio-freight/lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './PanelsContainer.module.scss';
+import CenterPanel from './CenterPanel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -151,16 +152,41 @@ const PanelsContainer: React.FC<Props> = ({
             </div>
           </section>
 
-          {/* 5~9번: 중앙 텍스트 */}
-          {[4,5,6,7,8].map(idx => (
-            <section
-              key={idx}
-              className={`${styles.panel} ${styles.panelCenter}`}
-              data-index={idx}
-            >
-              <h2>{`${idx + 1}번째 패널 중앙 텍스트`}</h2>
-            </section>
-          ))}
+
+      {/* 5번 패널 */}
+       <CenterPanel
+         index={4}
+         title="Presence"
+         description="2023년에 제작된 Presence 프로젝트입니다."
+       />
+
+       {/* 6번 패널 */}
+       <CenterPanel
+         index={5}
+         title="Flow"
+         description="2024년에 제작된 Flow 프로젝트입니다."
+     />
+
+       {/* 7번 패널 */}
+       <CenterPanel
+         index={6}
+         title="Clarity"
+         description="2024년에 제작된 Clarity 프로젝트입니다."
+       />
+
+       {/* 8번 패널 */}
+       <CenterPanel
+         index={7}
+         title="Breath"
+         description="2024년에 제작된 Breath 프로젝트입니다."
+       />
+
+       {/* 9번 패널 */}
+       <CenterPanel
+         index={8}
+         title="Surrender"
+         description="2025년에 제작된 Surrender 프로젝트입니다."
+       />
 
         </div>
       </div>
