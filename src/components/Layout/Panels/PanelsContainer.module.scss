@@ -253,20 +253,54 @@
 }
 
 @media (max-width: 768px) {
+  /* panelsContainer 바로 안에서 */
   .panelsContainer {
-    /* .panelSplit 패널 전체를 수직 정렬(column)로 변경 */
+    /* 1) panelSplit 전체를 컬럼 방향으로 */
     .panelSplit {
-      display: flex;
-      flex-direction: column;
+      display: flex !important;
+      flex-direction: column !important;
+
+      /* 2) 좌/우 50% → 100% */
+      .panelLeft,
+      .panelRight {
+        width: 100% !important;
+      }
+
+      /* 3) 텍스트(왼쪽) 아래 여유 추가 */
+      .panelLeft {
+        margin-bottom: 1.5rem !important;
+      }
     }
-    /* 좌/우 50% 너비였던 것을 100%로 */
-    .panelSplit .panelLeft,
-    .panelSplit .panelRight {
-      width: 100%;
+
+    /* 4) Contact 패널 안 container 중앙 정렬 */
+    .contactContainer {
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+      transform: translateX(-20%);
+      text-align: center;
     }
-    /* 텍스트와 이미지 사이에 간격 추가 */
-    .panelSplit .panelLeft {
-      margin-bottom: 1.5rem;
+
+    /* 5) spaceText (GET IN TOUCH 등) */
+    .spaceText {
+      font-size: clamp(4rem, 10vw, 8rem) !important;
+      line-height: 1 !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.03em !important;
+      text-transform: uppercase !important;
+      margin-bottom: var(--space-6) !important;
+      color: var(--color-accent) !important;
+    }
+
+    /* 6) contactName */
+    .contactName {
+      font-size: clamp(5rem, 10vw, 8rem) !important;
+      color: var(--color-text) !important;
+      margin-bottom: var(--space-12) !important;
+      line-height: 1 !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: -0.02em !important;
     }
   }
 }
