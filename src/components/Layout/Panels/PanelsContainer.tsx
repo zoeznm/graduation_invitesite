@@ -4,13 +4,15 @@ import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./PanelsContainer.module.scss";
-import CenterPanel from "./CenterPanel";
+// import CenterPanel from "./CenterPanel";
+import FirstImage from "../../../assets/img/anger.jpg";
+// import SecondImage from "../../../assets/img/poster.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SMOOTH = 0.065;
 const WHEEL_SENSE = 1.0;
-const PANEL_COUNT = 9;
+const PANEL_COUNT = 5;
 
 function clamp(val: number, min: number, max: number) {
   return Math.min(Math.max(val, min), max);
@@ -125,74 +127,132 @@ const PanelsContainer: React.FC<Props> = ({
             data-index={0}
           >
             <div className={styles.panelLeft}>
-              <h2>첫 번째 패널 제목</h2>
-              <p>첫 번째 패널 설명 텍스트를 여기에 적습니다.</p>
+              <div className={styles.chapter}>Introduction</div>
+              <h2 className={styles.title}>
+                {/* “Have you ever had a moment when you were truly angry?” */}
+                Have you ever been so angry that, for a moment, nothing mattered
+                but the fire inside you?
+              </h2>
+              {/* <p>“정말 화가 치밀어 올랐던 순간이 있었나요?”</p> */}
+              {/* <p>순간이라도 오직 가슴속 불길만 중요하게 느껴질 만큼 화가 난 적이 있나요?</p> */}
+              <p>
+                The vast emptiness of space offers us perspective. It reminds us
+                how small we are in the grand scheme of things. Yet somehow,
+                that doesn't diminish us – it elevates our existence into
+                something miraculous.
+              </p>
             </div>
             <div className={styles.panelRight}>
-              <div className={styles.imagePlaceholder}>이미지 영역</div>
+              <div className={styles.imagePlaceholder}>
+                <img src={FirstImage} alt="패널 이미지 설명" />
+              </div>
             </div>
           </section>
 
           {/* 2~3번: 중앙 텍스트 */}
           <section
-            className={`${styles.panel} ${styles.panelCenter}`}
+            className={`${styles.panel} ${styles.boostioPanel}`}
             data-index={1}
           >
-            <h2>두 번째 패널 중앙 텍스트</h2>
+            <div className={styles.boostioTopText}>
+            HNU 34th Graduation Collection Fashion Show
+            </div>
+
+            <h2 className={styles.boostioMainTitle}>개화(開火)</h2>
+
+            <div className={styles.boostioBottomRow}>
+              <div className={styles.boostioBottomLeft}>2025.06.07</div>
+              <div className={styles.boostioBottomRight}>SATURDAY</div>
+            </div>
+
+            <div className={styles.boostioFooterText}>
+            Daejeon Artist House
+            </div>
           </section>
           <section
             className={`${styles.panel} ${styles.panelCenter}`}
             data-index={2}
           >
-            <h2>세 번째 패널 중앙 텍스트</h2>
+            <div className={styles.contactContainer}>
+              <div className={styles.contactContent}>
+                {/* spaceText 와 contactName 두 개 클래스 */}
+                <a
+                  href="https://www.google.com/maps/dir//Daejeon,+Jung-gu,+Jungang-ro,+32/data=!4m8!4m7!1m0!1m5!1m1!1s0x3565492d0acd5835:0xc95e7ffeeeaaf0e4!2m2!1d127.416055!2d36.322299?entry=ttu&g_ep=EgoyMDI1MDUwMy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.spaceText} ${styles.contactName}  ${styles.rotate90}`}
+                >
+                  LOCATION
+                </a>
+              </div>
+            </div>
           </section>
 
           {/* 4번: 좌측 이미지 · 우측 텍스트 */}
           <section
-            className={`${styles.panel} ${styles.panelSplit}`}
+            className={`${styles.panel} ${styles.editorialSplit}`}
             data-index={3}
           >
             <div className={styles.panelLeft}>
-              <div className={styles.imagePlaceholder}>이미지 영역</div>
+              <div className={styles.panelContent}>
+                <div className={styles.directionLabel}>Matthew</div>
+                <div className={styles.quoteContainer}>
+                  <div className={styles.quote}>
+                    "I've always approached the cosmos with a sense of wonder.
+                    It's like looking at your reflection in a mirror that
+                    stretches into infinity. You see yourself, but you also see
+                    beyond yourself."
+                  </div>
+                  <div className={styles.author}>INTERSTELLAR, 2014</div>
+                </div>
+                <div className={styles.imageContainer}>
+                  <div className={styles.imageWrapper}>
+                    <img
+                      src="https://cdn.cosmos.so/f22462ad-b33d-448d-aa08-cfbbbe79ef42.jpeg"
+                      alt="Space journey"
+                      className={styles.parallax}
+                      data-speed="0.15"
+                    />
+                  </div>
+                </div>
+                <div className={styles.conclusionText}>
+                  <p className={styles.splitText}>
+                    Looking out there is really looking in here. The questions
+                    we ask about the stars are really questions about ourselves.
+                  </p>
+                </div>
+              </div>
             </div>
             <div className={styles.panelRight}>
-              <h2>네 번째 패널 텍스트</h2>
-              <p>네 번째 패널 설명을 여기에 작성합니다.</p>
+              <div className={styles.panelContent}>
+                <div className={styles.directionLabel}>Rick</div>
+                <div className={styles.quoteContainer}>
+                  <div className={styles.quote}>
+                    "Great art creates space. Great space creates perspective.
+                    When we stand at the edge of the known, that's where true
+                    creativity begins."
+                  </div>
+                  <div className={styles.author}>CREATIVE PROCESS, 2022</div>
+                </div>
+                <div className={styles.fullQuote}>
+                  "The universe doesn't rush, yet everything gets done. That's
+                  the paradox we're trying to understand – infinite patience
+                  paired with constant evolution."
+                </div>
+                <div className={styles.text}>
+                  <p className={styles.splitText}>
+                    What we discover out there transforms everything down here.
+                    Each revelation about a distant galaxy reshapes how we see
+                    ourselves on this pale blue dot.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
-
-          {/* 5번 패널 */}
-          <CenterPanel
-            index={4}
-            title="Presence"
-            description="2023년에 제작된 Presence 프로젝트입니다."
-          />
-
-          {/* 6번 패널 */}
-          <CenterPanel
-            index={5}
-            title="Flow"
-            description="2024년에 제작된 Flow 프로젝트입니다."
-          />
-
-          {/* 7번 패널 */}
-          <CenterPanel
-            index={6}
-            title="Clarity"
-            description="2024년에 제작된 Clarity 프로젝트입니다."
-          />
-
-          {/* 8번 패널 */}
-          <CenterPanel
-            index={7}
-            title="Breath"
-            description="2024년에 제작된 Breath 프로젝트입니다."
-          />
-
-          {/* 9번 패널: GET IN TOUCH */}
+          {/* 5번 패널: GET IN TOUCH */}
           <section
             className={`${styles.panel} ${styles.panelCenter}`}
-            data-index={8}
+            data-index={4}
           >
             <div className={styles.contactContainer}>
               <div className={styles.contactContent}>

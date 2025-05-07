@@ -7,13 +7,9 @@ import { ScrollContext } from '../../../contexts/ScrollContext';
 const MENU_ITEMS = [
   '01 Introduction',
   '02 Matthew',
-  '03 Beyond',
-  '04 Rick',
-  '05 Cosmos',
-  '06 Dialogue',
-  '07 Infinite',
-  '08 Vision',
-  '09 Contact',
+  '03 Location',
+  '04 Credits',
+  '05 Contact',
 ];
 
 const LeftMenu: React.FC = () => {
@@ -31,7 +27,7 @@ const LeftMenu: React.FC = () => {
       </button>
 
       <div className={styles.leftMenuMiddle}>
-        <div className={styles.logo}>SPACE</div>
+        <div className={styles.logo}>PÁKYEON</div>
       </div>
 
       <nav className={styles.sectionNav}>

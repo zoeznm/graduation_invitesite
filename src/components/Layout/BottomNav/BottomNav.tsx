@@ -7,7 +7,7 @@ interface Props {
   progress: number;
 }
 
-const PANEL_COUNT = 9;
+const PANEL_COUNT = 5;
 
 const BottomNav: React.FC<Props> = ({ currentPanel, progress }) => (
   <div className={styles.navigation}>
