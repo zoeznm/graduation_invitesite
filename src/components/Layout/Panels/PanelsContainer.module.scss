@@ -76,50 +76,52 @@
 .boostioPanel {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;   /* 요소들 사이 빈공간 고르게 */
-  align-items: center;
-  height: 100vh;
-  padding: 0;                      /* 여백 없이 꽉 채우기 */
-  background-color: #000;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: var(--font-display), sans-serif;
-}
-
-.boostioTopText {
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin: 0;
-}
-
-.boostioMainTitle {
-  font-size: clamp(8rem, 20vw, 14rem);
-  line-height: 1;
-  margin: 0;
-  letter-spacing: 0.1em;
-}
-
-.boostioBottomRow {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 90%;
-  font-size: clamp(2rem, 5vw, 4rem);
-  margin: 0;
-  padding: 0 2rem;
-}
-.boostioBottomLeft {
-  text-align: left;
-}
-
-.boostioBottomRight {
-  text-align: right;
-}
-
-.boostioFooterText {
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 0.3em;
-  margin: 0;
+  justify-content: center;  /* 수직 중앙 정렬 */
+  align-items: center;      /* 가로 중앙 정렬 */
   text-align: center;
+  min-height: 80vh;         /* 약간만 줄여서 위아래 여유를 줌 */
+  padding: var(--space-4) var(--space-6);
+  
+  /* 상단 부제목 */
+  .boostioTopText {
+    font-size: var(--text-sm);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: var(--space-3);
+  }
+
+  /* 메인 타이틀 */
+  .boostioMainTitle {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 1.1;
+    margin-bottom: var(--space-4);
+    color: var(--color-accent);
+  }
+
+  /* 날짜 · 요일 한 줄 */
+  .boostioBottomRow {
+    display: flex;
+    gap: var(--space-6);
+    margin-bottom: var(--space-4);
+
+    .boostioBottomLeft,
+    .boostioBottomRight {
+      font-size: var(--text-lg);
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+  }
+
+  /* 하단 장소 */
+  .boostioFooterText {
+    font-size: var(--text-base);
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
 }
 .title {
   font-family: var(--font-display);
