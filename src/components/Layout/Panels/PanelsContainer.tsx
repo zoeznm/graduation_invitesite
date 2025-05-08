@@ -226,7 +226,7 @@ const PanelsContainer: React.FC<Props> = ({
                 </div>
                 <div className={styles.emailWrapper}>
                   <a href="mailto:hi@filip.fyi" className={styles.email}>
-                    @hyunjunpark
+                    @hyunjunpark_
                   </a>
                   <button
                     className={styles.copyEmail}

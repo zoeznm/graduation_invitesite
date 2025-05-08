@@ -381,9 +381,9 @@
 }
 .emailWrapper {
   position: relative; display:inline-flex; align-items:center;
-  gap: var(--space-3);
+  gap: var(--space-2);
   background: rgba(255,255,255,0.05);
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-3) var(--space-4);
   border-radius: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform var(--transition-medium),
